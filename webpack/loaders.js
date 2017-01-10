@@ -9,6 +9,12 @@ exports.jsx = {
   }
 };
 
+exports.eslint = {
+  test: /\.js(x?)$/,
+  exclude: /node_modules/,
+  loader: 'eslint-loader'
+}
+
 exports.html = {
   test: /\.html$/,
   loader: 'raw',

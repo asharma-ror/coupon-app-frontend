@@ -36,6 +36,10 @@ module.exports = {
     ]
   },
 
+  eslint: {
+    configFile: './.eslintrc'
+  },
+
   plugins: plugins,
 
   devServer: {
@@ -43,6 +47,9 @@ module.exports = {
   },
 
   module: {
+    preLoaders: [
+      loaders.eslint
+    ],
     loaders: [
       loaders.jsx,
       loaders.html,
