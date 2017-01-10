@@ -32,7 +32,8 @@ module.exports = {
       '.webpack.js',
       '.web.js',
       '.js',
-      '.json'
+      '.json',
+      '.jsx'
     ]
   },
 
