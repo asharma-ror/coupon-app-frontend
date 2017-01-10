@@ -8,12 +8,16 @@
   },
   "repository": {
     "type": "git",
-    "url":
+    "url": ""
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url":
+    "url": ""
   },
-  "homepage":
+  "homepage": "",
+  "devDependencies": {
+    "webpack": "^1.14.0",
+    "webpack-dev-server": "^1.16.2"
+  }
 }
