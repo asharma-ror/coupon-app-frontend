@@ -1,11 +1,10 @@
 /* global fetch:true*/
 /* eslint no-undef: "error"*/
-const BASE_URL = 'http://c435db48.ngrok.io:1337';
+const BASE_URL = 'https://stripe-coupon-api.herokuapp.com';
 let authorizationToken;
 
 const getHeaders = () => {
   const headers = {
-    Accept: 'application/json',
     'Content-Type': 'application/json',
   };
 
@@ -29,7 +28,8 @@ export const apiCall = (url, method, body) => (
   fetch(`${BASE_URL}${url}`, {
     method,
     headers: getHeaders(),
-    body,
+    body: JSON.stringify(body),
+    mode: 'cors',
   })
     .then(statusHelper)
     .then(response => response.json())
