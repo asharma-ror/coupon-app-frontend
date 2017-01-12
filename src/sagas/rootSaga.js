@@ -1,13 +1,10 @@
-import { call } from 'redux-saga/effects';
+import { fork } from 'redux-saga/effects';
 import { sagaMiddleware } from '../store/store';
-
-const testFunction = () => {
-  console.log('testing Saga');
-  console.log('If this is presented then it is woking fine');
-};
+import { watchGetApi, watchPostApi } from '../Api/ApiSaga'
 
 function* root() {
-  yield call(testFunction);
+  yield fork(watchGetApi)
+  yield fork(watchPostApi)
 }
 
 const runRootSaga: () => void = () => sagaMiddleware.run(root);
