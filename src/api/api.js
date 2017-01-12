@@ -1,12 +1,12 @@
 /* global fetch:true*/
 /* eslint no-undef: "error"*/
-const BASE_URL = '';
+const BASE_URL = 'http://c435db48.ngrok.io:1337';
 let authorizationToken;
 
 const getHeaders = () => {
   const headers = {
     Accept: 'application/json',
-    'Content-Type': 'multipart/form-data',
+    'Content-Type': 'application/json',
   };
 
   const token = authorizationToken;

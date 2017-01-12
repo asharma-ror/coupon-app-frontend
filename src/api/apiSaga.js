@@ -2,7 +2,7 @@ import { call, put, takeEvery } from 'redux-saga/effects';
 import { GET_API_ACTION, POST_API_ACTION } from './apiActions';
 import { getApiCall, postApiCall } from './api';
 
-export function* getApi(action) {
+function* getApi(action) {
   yield put({ type: action.types[0] });
   const response = yield call(getApiCall, action.url, action.body);
 
@@ -12,7 +12,7 @@ export function* getApi(action) {
   yield put({ type: action.types[1], data: response });
 }
 
-export function* postApi(action) {
+function* postApi(action) {
   yield put({ type: action.types[0] });
   const response = yield call(postApiCall, action.url, action.body);
   if (response.error) {
