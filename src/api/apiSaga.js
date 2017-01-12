@@ -23,9 +23,9 @@ function* postApi(action) {
 }
 
 export function* watchGetApi() {
-  yield* takeEvery(GET_API_ACTION, getApi);
+  yield takeEvery(GET_API_ACTION, getApi);
 }
 
 export function* watchPostApi() {
-  yield* takeEvery(POST_API_ACTION, postApi);
+  yield takeEvery(POST_API_ACTION, postApi);
 }
