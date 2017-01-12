@@ -7,6 +7,6 @@ function* root() {
   yield fork(watchPostApi);
 }
 
-const runRootSaga: () => void = () => sagaMiddleware.run(root);
+const runRootSaga = () => sagaMiddleware.run(root);
 
 export default runRootSaga;
