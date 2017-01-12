@@ -1,35 +1,86 @@
 import * as React from 'react';
 import './loginForm.css';
 
-const LoginForm = () => (
-  <form id={'login-form'} role={'form'} style={{ display: 'block' }}>
-    <div className={'form-group'}>
-      <input type={'text'} name={'username'} id={'username'} tabIndex={'-1'} className={'form-control'} placeholder={'Username'} value={''} />
-    </div>
-    <div className={'form-group'}>
-      <input type={'password'} name={'password'} id={'password'} tabIndex={'-2'} className={'form-control'} placeholder={'Password'} />
-    </div>
-    <div className={'form-group text-center'}>
-      <input type={'checkbox'} tabIndex={'-3'} className={''} name={'remember'} id={'remember'} />
-      <label htmlFor={'remember'}> Remember Me</label>
-    </div>
-    <div className={'form-group'}>
-      <div className={'row'}>
-        <div className={'col-sm-6 col-sm-offset-3'}>
-          <input type={'submit'} name={'login-submit'} tabIndex={'-4'} className={'form-control btn btn-login'} value={'Log In'} />
+class LoginForm extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      email: '',
+      password: '',
+    };
+  }
+
+  onEmailChange(e) {
+    this.setState({ email: e.target.value });
+  }
+
+  onPasswordChange(e) {
+    this.setState({ password: e.target.value });
+  }
+
+  onLoginClick() {
+    if (this.state.email && this.state.password) {
+      this.props.callLogin(this.state.email, this.state.password);
+    }
+  }
+
+  render() {
+    return (
+      <form style={{ display: 'block' }}>
+        <div className={'form-group'}>
+          <input
+            type={'text'}
+            className={'form-control'}
+            placeholder={'Email'}
+            value={this.state.email}
+            onChange={e => this.onEmailChange(e)}
+          />
         </div>
-      </div>
-    </div>
-    <div className={'form-group'}>
-      <div className={'row'}>
-        <div className={'col-lg-12'}>
-          <div className={'text-center'}>
-            <a tabIndex={'-5'} className={'forgot-password'}>Forgot Password?</a>
+        <div className={'form-group'}>
+          <input
+            type={'password'}
+            className={'form-control'}
+            placeholder={'Password'}
+            value={this.state.password}
+            onChange={e => this.onPasswordChange(e)}
+          />
+        </div>
+        <div className={'form-group text-center'}>
+          <input type={'checkbox'} name={'remember'} />
+          <label htmlFor={'remember'}> Remember Me</label>
+        </div>
+        <div className={'form-group'}>
+          <div className={'row'}>
+            <div className={'col-sm-6 col-sm-offset-3'}>
+              <input
+                type={'button'}
+                disabled={this.props.isLoading}
+                className={'form-control btn btn-login'}
+                value={'Log In'}
+                onClick={() => this.onLoginClick()}
+              />
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  </form>
-);
+        <div className={'form-group'}>
+          <div className={'row'}>
+            <div className={'col-lg-12'}>
+              <div className={'text-center'}>
+                <a className={'forgot-password'}>Forgot Password?</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    );
+  }
+}
+
+LoginForm.propTypes = {
+  callLogin: React.PropTypes.func.isRequired,
+  isLoading: React.PropTypes.bool.isRequired,
+};
 
 export default LoginForm;
