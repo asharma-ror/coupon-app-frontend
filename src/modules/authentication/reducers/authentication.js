@@ -1,4 +1,4 @@
-import { LOGIN, LOGIN_SUCCESS, LOGIN_FAILURE } from '../actions/loginAction';
+import { LOGIN, LOGIN_SUCCESS, LOGIN_FAILURE, GOT_TOKEN } from '../actions/loginAction';
 
 const intialState = {
   isLoading: false,
@@ -16,12 +16,16 @@ const authentication = (state = intialState, action) => {
       return {
         ...state,
         isLoading: false,
-        token: action.data,
       };
     case LOGIN_FAILURE:
       return {
         ...state,
         isLoading: false,
+      };
+    case GOT_TOKEN:
+      return {
+        ...state,
+        token: action.token,
       };
     default:
       return state;
