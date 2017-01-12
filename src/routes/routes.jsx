@@ -6,10 +6,11 @@ import {
   COUPONS_ROUTE,
 } from './../constants/Routes';
 import Login from '../modules/authentication/screens/Login';
+import CouponList from '../modules/coupons/screens/CouponList';
 
 export default (
   <Route path={BASE_ROUTE}>
     <Route path={LOGIN_ROUTE} component={Login} />
-    <Route path={COUPONS_ROUTE} component={() => (<div>Coupons Page</div>)} />
+    <Route path={COUPONS_ROUTE} component={CouponList} />
   </Route>
 );
