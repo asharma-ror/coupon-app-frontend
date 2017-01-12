@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
+import authentication from '../modules/authentication/reducers/authentication';
 
 const reducers = {
-  test: (state = {}) => state,
+  authentication,
 };
 
 export default combineReducers(reducers);
