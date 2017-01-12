@@ -1,15 +1,11 @@
 import { GOT_USER } from '../actions/userActions';
 
-const initialState = {
-  user: {},
-};
-
-const user = (state = initialState, action) => {
+const user = (state = {}, action) => {
   switch (action.type) {
     case GOT_USER:
       return {
         ...state,
-        user: action.data,
+        ...action.user,
       };
     default:
       return state;
