@@ -1,13 +1,11 @@
 body {
-  background: url(../assets/coupon-bg.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
+  background: #333;
   font-family: 'Lato', sans-serif;
   height: 100%;
 }
 
 .body-bg {
-  padding-top: 198px;
+  padding-top: 160px;
 }
 
 .login-field {
@@ -16,13 +14,26 @@ body {
   text-align: center;
 }
 
+.login-field .form-group.text-center {
+  display: inline-block;
+}
+
+.login-field .form-group.text-center input {
+  margin: 0 5px 0 0;
+  float: left;
+}
+
+.login-field .row {
+  margin: 0px;
+}
+
 .login-field .col-md-6 {
   display: inline-block;
   float: none;
 }
 
 .login-field .panel {
-  background: rgba(0, 0, 0, 0.5);
+  background: #383c3e;
 }
 
 .panel-login {
@@ -41,7 +52,7 @@ body {
 }
 
 .login {
-  padding-right: 0px;
+  padding: 0px;
 }
 
 .register {
@@ -52,15 +63,15 @@ body {
   text-decoration: none;
   color: #fff;
   text-transform: uppercase;
-  font-size: 15px;
+  font-size: 25px;
   -webkit-transition: all 0.1s linear;
   -moz-transition: all 0.1s linear;
   transition: all 0.1s linear;
   display: inline-block;
   width: 100%;
   padding: 10px 0px;
-  font-weight: 400;
-  background: #15a4fa;
+  font-weight: 600;
+  background: #333;
 }
 
 .panel-login>.panel-heading hr {
@@ -105,7 +116,7 @@ body {
 }
 
 .btn-login {
-  background-color: #14ad00;
+  background-color: #383c3e;
   outline: none;
   color: #fff;
   font-size: 14px;
@@ -118,7 +129,6 @@ body {
 .btn-login:hover,
 .btn-login:focus {
   color: #fff;
-  background-color: #14c400;
 }
 
 .forgot-password {
