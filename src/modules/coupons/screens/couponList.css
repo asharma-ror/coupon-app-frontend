@@ -1,14 +1,11 @@
 body {
-  background: url(../../authentication/assets/coupon-bg.jpg);
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
+  background: #333;
   height: 100%;
   font-family: 'Lato', sans-serif;
 }
 
 header {
-  background: rgba(23, 142, 18, 0.6);
+  background: #202020;
   display: inline-block;
   width: 100%;
   padding: 13px 0px;
@@ -69,6 +66,7 @@ header h1 a:hover {
 
 .custom-form {
   padding: 15px;
+  left: -295px;
 }
 
 .coupon-field {
