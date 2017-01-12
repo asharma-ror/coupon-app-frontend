@@ -1,5 +1,5 @@
 import * as React from 'react';
-// import style from './loginForm.css';
+import './loginForm.css';
 
 const LoginForm = () => (
   <form id={'login-form'} role={'form'} style={{ display: 'block' }}>
