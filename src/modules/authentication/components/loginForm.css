@@ -1,0 +1,14 @@
+.form-control::-moz-placeholder {
+  color: #333
+}
+
+.forgot-password {
+  text-decoration: underline;
+  color: #fff;
+}
+
+.forgot-password:hover,
+.forgot-password:focus {
+  text-decoration: underline;
+  color: #fff;
+}
