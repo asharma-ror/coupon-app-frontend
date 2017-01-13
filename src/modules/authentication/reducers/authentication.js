@@ -1,11 +1,11 @@
 import { LOGIN, LOGIN_SUCCESS, LOGIN_FAILURE, GOT_TOKEN } from '../actions/loginAction';
 
-const intialState = {
+const initialState = {
   isLoading: false,
   token: null,
 };
 
-const authentication = (state = intialState, action) => {
+const authentication = (state = initialState, action) => {
   switch (action.type) {
     case LOGIN:
       return {
