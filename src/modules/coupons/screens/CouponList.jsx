@@ -19,6 +19,7 @@ class CouponsList extends React.Component {
     console.log(this.props.isGettingCoupons);
     console.log(this.props.isDeletingCoupons);
     console.log(this.props.isCreatingCoupons);
+    console.log(this.props.errorInDelete);
   }
 
   render() {
@@ -27,11 +28,18 @@ class CouponsList extends React.Component {
       user,
       deleteCoupon,
       createCoupon,
-      logout } = this.props;
+      logout,
+      isCreatingCoupons,
+      errorInCreate } = this.props;
 
     return (
       <div>
-        <Header createCoupon={createCoupon} logout={logout} />
+        <Header
+          createCoupon={createCoupon}
+          logout={logout}
+          isCreatingCoupons={isCreatingCoupons}
+          errorInCreate={errorInCreate}
+        />
         <div className={'coupon-field'}>
           <div className={'container'}>
             <div className={'my-coupon'}>
@@ -67,6 +75,13 @@ CouponsList.propTypes = {
   isDeletingCoupons: React.PropTypes.bool.isRequired,
   isCreatingCoupons: React.PropTypes.bool.isRequired,
   user: React.PropTypes.object.isRequired,
+  errorInDelete: React.PropTypes.string,
+  errorInCreate: React.PropTypes.string,
+};
+
+CouponsList.defaultProps = {
+  errorInDelete: '',
+  errorInCreate: '',
 };
 
 const mapStateToProps = state => ({
@@ -75,6 +90,8 @@ const mapStateToProps = state => ({
   isGettingCoupons: state.coupons.isGettingCoupons,
   isDeletingCoupons: state.coupons.isDeletingCoupons,
   isCreatingCoupons: state.coupons.isCreatingCoupons,
+  errorInDelete: state.coupons.errorInDelete,
+  errorInCreate: state.coupons.errorInCreate,
 });
 
 const mapDispatchToProps = dispatch => ({

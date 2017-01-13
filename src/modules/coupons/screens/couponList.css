@@ -231,3 +231,14 @@ input[disabled] {
     top: 83px;
   }
 }
+
+.loader {
+  position: absolute;
+  right: 2em;
+  top: 1em;
+}
+
+.loaderImage {
+  font-size: 1.7rem;
+  color: #fff
+}
