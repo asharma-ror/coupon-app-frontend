@@ -61,6 +61,11 @@ class LoginForm extends React.Component {
                 value={'Log In'}
                 onClick={() => this.onLoginClick()}
               />
+              { this.props.isLoading &&
+                <div className={'loader'}>
+                  <i className={'fa fa-circle-o-notch fa-spin fa-3x fa-fw loaderImage'} aria-hidden={'true'} />
+                </div>
+              }
             </div>
           </div>
         </div>

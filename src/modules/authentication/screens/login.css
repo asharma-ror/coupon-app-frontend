@@ -164,3 +164,14 @@ body {
   background-color: #1CA347;
   border-color: #1CA347;
 }
+
+.loader {
+  position: absolute;
+  right: 2em;
+  top: 1em;
+}
+
+.loaderImage {
+  font-size: 1.7rem;
+  color: #fff
+}
