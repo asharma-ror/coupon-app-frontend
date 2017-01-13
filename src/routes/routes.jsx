@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { Route } from 'react-router';
+import { Route, Redirect } from 'react-router';
 import {
-  BASE_ROUTE,
   LOGIN_ROUTE,
   COUPONS_ROUTE,
 } from './../constants/Routes';
@@ -10,8 +9,9 @@ import CouponList from '../modules/coupons/screens/CouponList';
 import requireAuthentication from './authentication/authentication';
 
 export default (
-  <Route path={BASE_ROUTE}>
+  <Route>
     <Route path={LOGIN_ROUTE} component={requireAuthentication(Login, false)} />
     <Route path={COUPONS_ROUTE} component={requireAuthentication(CouponList, true)} />
+    <Redirect from="/*" to={LOGIN_ROUTE} />
   </Route>
 );
