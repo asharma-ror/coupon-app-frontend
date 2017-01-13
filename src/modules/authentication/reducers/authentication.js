@@ -2,7 +2,7 @@ import { LOGIN, LOGIN_SUCCESS, LOGIN_FAILURE, GOT_TOKEN } from '../actions/login
 
 const initialState = {
   isLoading: false,
-  token: null,
+  token: '',
 };
 
 const authentication = (state = initialState, action) => {
