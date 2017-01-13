@@ -36,6 +36,8 @@ class Header extends React.Component {
                     <AddCouponForm
                       createCoupon={this.props.createCoupon}
                       closeForm={() => this.closeForm()}
+                      errorInCreate={this.props.errorInCreate}
+                      isCreatingCoupons={this.props.isCreatingCoupons}
                     />
                   </div>
                 }
@@ -54,6 +56,12 @@ class Header extends React.Component {
 Header.propTypes = {
   createCoupon: React.PropTypes.func.isRequired,
   logout: React.PropTypes.func.isRequired,
+  errorInCreate: React.PropTypes.string,
+  isCreatingCoupons: React.PropTypes.bool.isRequired,
+};
+
+Header.defaultProps = {
+  errorInCreate: '',
 };
 
 export default Header;
