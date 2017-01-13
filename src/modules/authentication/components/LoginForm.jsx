@@ -73,6 +73,11 @@ class LoginForm extends React.Component {
             </div>
           </div>
         </div>
+        { this.props.error !== '' &&
+          <div className={'alert alert-danger'}>
+            {this.props.error}
+          </div>
+        }
       </form>
     );
   }
@@ -81,6 +86,9 @@ class LoginForm extends React.Component {
 LoginForm.propTypes = {
   callLogin: React.PropTypes.func.isRequired,
   isLoading: React.PropTypes.bool.isRequired,
+  error: React.PropTypes.string,
 };
+
+LoginForm.defaultProps = { error: '' };
 
 export default LoginForm;

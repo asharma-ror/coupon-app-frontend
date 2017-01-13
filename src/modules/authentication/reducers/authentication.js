@@ -21,6 +21,7 @@ const authentication = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
+        error: action.data,
       };
     case GOT_TOKEN:
       return {

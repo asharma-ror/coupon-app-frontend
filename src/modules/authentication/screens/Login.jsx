@@ -4,7 +4,7 @@ import { login } from '../actions/loginAction';
 import './login.css';
 import LoginForm from '../components/LoginForm';
 
-const Login = ({ isLoading, callLogin }) => (
+const Login = props => (
   <div className={'body-bg'}>
     <div className={'login-field'}>
       <div className={'container'}>
@@ -23,8 +23,7 @@ const Login = ({ isLoading, callLogin }) => (
                 <div className={'row'}>
                   <div className={'col-lg-12'}>
                     <LoginForm
-                      isLoading={isLoading}
-                      callLogin={callLogin}
+                      {...props}
                     />
                   </div>
                 </div>
@@ -41,10 +40,14 @@ const Login = ({ isLoading, callLogin }) => (
 Login.propTypes = {
   callLogin: React.PropTypes.func.isRequired,
   isLoading: React.PropTypes.bool.isRequired,
+  error: React.PropTypes.string,
 };
+
+Login.defaultProps = { error: '' };
 
 const mapStateToProps = state => ({
   isLoading: state.authentication.isLoading,
+  error: state.authentication.error,
 });
 
 const mapDispatchToProps = dispatch => ({
