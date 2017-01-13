@@ -4,7 +4,7 @@ import { getApiCall, postApiCall, deleteApiCall } from './api';
 
 function* manageResponse(action, response) {
   if (!response.success) {
-    yield put({ type: action.types[2], data: response });
+    yield put({ type: action.types[2], data: response.message });
   } else {
     yield put({ type: action.types[1], data: response });
   }
