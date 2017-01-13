@@ -19,6 +19,7 @@ export const deleteCouponAction = id => (
       CouponActionTypes.DELETE_COUPON_SUCCESS,
       CouponActionTypes.DELETE_COUPON_FAILURE,
     ],
+    id,
     url: `/api/v1/coupon/${id}`,
   })
 );
