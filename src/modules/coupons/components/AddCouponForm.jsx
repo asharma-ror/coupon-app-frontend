@@ -34,13 +34,16 @@ class AddCouponForm extends React.Component {
   render() {
     return (
       <form>
+        <h5 style={{ color: '#fff' }}>Select either amount Off or percent off!</h5>
         <InputField
           {...linkState(this, 'amountOff')}
           placeholder={'Amount Off'}
+          disabled={this.state.percentOff !== ''}
         />
         <InputField
           {...linkState(this, 'percentOff')}
           placeholder={'Percent Off'}
+          disabled={this.state.amountOff !== ''}
         />
         <InputField
           {...linkState(this, 'id')}
