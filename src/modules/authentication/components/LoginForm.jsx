@@ -1,5 +1,6 @@
 import * as React from 'react';
 import './loginForm.css';
+import linkState from '../../../utils/linkState';
 
 class LoginForm extends React.Component {
 
@@ -9,21 +10,20 @@ class LoginForm extends React.Component {
     this.state = {
       email: '',
       password: '',
+      errorMessage: '',
     };
   }
 
-  onEmailChange(e) {
-    this.setState({ email: e.target.value });
-  }
-
-  onPasswordChange(e) {
-    this.setState({ password: e.target.value });
-  }
-
   onLoginClick() {
-    if (this.state.email && this.state.password) {
+    if (this.isValid()) {
       this.props.callLogin(this.state.email, this.state.password);
+    } else {
+      this.setState({ errorMessage: 'Please fill all the fields!' });
     }
+  }
+
+  isValid() {
+    return this.state.email && this.state.password;
   }
 
   render() {
@@ -34,8 +34,7 @@ class LoginForm extends React.Component {
             type={'text'}
             className={'form-control'}
             placeholder={'Email'}
-            value={this.state.email}
-            onChange={e => this.onEmailChange(e)}
+            {...linkState(this, 'email')}
           />
         </div>
         <div className={'form-group'}>
@@ -43,8 +42,7 @@ class LoginForm extends React.Component {
             type={'password'}
             className={'form-control'}
             placeholder={'Password'}
-            value={this.state.password}
-            onChange={e => this.onPasswordChange(e)}
+            {...linkState(this, 'password')}
           />
         </div>
         <div className={'form-group text-center'}>
@@ -78,9 +76,10 @@ class LoginForm extends React.Component {
             </div>
           </div>
         </div>
-        { this.props.error !== '' &&
+        { (this.props.error !== '' || this.state.errorMessage !== '') &&
           <div className={'alert alert-danger'}>
             {this.props.error}
+            {this.state.errorMessage}
           </div>
         }
       </form>
