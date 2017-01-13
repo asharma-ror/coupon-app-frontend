@@ -4,9 +4,11 @@ import { watchGetApi, watchPostApi } from '../api/apiSaga';
 import { watchLogin } from '../modules/authentication/sagas/loginFlowSaga';
 import { watchCouponsAction } from '../modules/coupons/sagas/couponsSaga';
 import { watchPushPathSaga } from '../routes/sagas/routeSaga';
+import startup from '../modules/startup/sagas/startupSaga';
 
 function* root() {
   yield fork(watchPushPathSaga);
+  yield fork(startup);
   yield fork(watchGetApi);
   yield fork(watchPostApi);
   yield fork(watchLogin);
