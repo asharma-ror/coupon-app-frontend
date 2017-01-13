@@ -3,7 +3,7 @@ import { GET_API_ACTION, POST_API_ACTION, DELETE_API_ACTION } from './apiActions
 import { getApiCall, postApiCall, deleteApiCall } from './api';
 
 function* manageResponse(action, response) {
-  if (response.err) {
+  if (!response.success) {
     yield put({ type: action.types[2], data: response });
   } else {
     yield put({ type: action.types[1], data: response });
