@@ -18,7 +18,7 @@ const coupons = (state = initialState, action) => {
       return {
         ...state,
         isGettingCoupons: false,
-        coupons: action.data,
+        coupons: action.data.coupons,
       };
     case CouponActionTypes.GET_COUPONS_FAILURE:
       return {
