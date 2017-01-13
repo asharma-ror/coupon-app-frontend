@@ -5,6 +5,8 @@ const initialState = {
   isDeletingCoupons: false,
   isCreatingCoupons: false,
   coupons: [],
+  errorInCreate: '',
+  errorInDelete: '',
 };
 
 const coupons = (state = initialState, action) => {
@@ -29,6 +31,7 @@ const coupons = (state = initialState, action) => {
       return {
         ...state,
         isDeletingCoupons: true,
+        errorInDelete: '',
       };
     case CouponActionTypes.DELETE_COUPON_SUCCESS:
       return {
@@ -38,12 +41,14 @@ const coupons = (state = initialState, action) => {
     case CouponActionTypes.DELETE_COUPON_FAILURE:
       return {
         ...state,
+        errorInDelete: action.data,
         isDeletingCoupons: false,
       };
     case CouponActionTypes.CREATE_COUPON:
       return {
         ...state,
         isCreatingCoupons: true,
+        errorInCreate: '',
       };
     case CouponActionTypes.CREATE_COUPON_SUCCESS:
       return {
@@ -54,6 +59,7 @@ const coupons = (state = initialState, action) => {
       return {
         ...state,
         isCreatingCoupons: false,
+        errorInCreate: action.data,
       };
     default:
       return state;
