@@ -7,10 +7,11 @@ import {
 } from './../constants/Routes';
 import Login from '../modules/authentication/screens/Login';
 import CouponList from '../modules/coupons/screens/CouponList';
+import requireAuthentication from './authentication/authentication';
 
 export default (
   <Route path={BASE_ROUTE}>
-    <Route path={LOGIN_ROUTE} component={Login} />
-    <Route path={COUPONS_ROUTE} component={CouponList} />
+    <Route path={LOGIN_ROUTE} component={requireAuthentication(Login, false)} />
+    <Route path={COUPONS_ROUTE} component={requireAuthentication(CouponList, true)} />
   </Route>
 );
