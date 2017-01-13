@@ -8,14 +8,13 @@ import {
   deleteCouponAction,
   createCouponAction,
 } from '../actions/couponActions';
+import { logoutAction } from '../../authentication/actions/loginAction';
 
 class CouponsList extends React.Component {
 
   componentWillMount() {
     this.props.getCoupons();
 
-    console.log(this.props.createCoupon);
-    console.log(this.props.deleteCoupon);
     console.log(this.props.coupons);
     console.log(this.props.isGettingCoupons);
     console.log(this.props.isDeletingCoupons);
@@ -23,22 +22,31 @@ class CouponsList extends React.Component {
   }
 
   render() {
-    // const { coupons, ...props } = this.props;
+    const {
+      coupons,
+      user,
+      deleteCoupon,
+      createCoupon,
+      logout } = this.props;
 
     return (
       <div>
-        <Header />
+        <Header createCoupon={createCoupon} logout={logout} />
         <div className={'coupon-field'}>
           <div className={'container'}>
             <div className={'my-coupon'}>
               <h2> Coupons</h2>
               <ul className={'row'}>
-                <Coupon />
-                <Coupon />
-                <Coupon />
-                <Coupon />
-                <Coupon />
-                <Coupon />
+                {
+                  coupons.map(coupon => (
+                    <Coupon
+                      key={coupon.id}
+                      coupon={coupon}
+                      showDelete={(coupon.user_id === user.id)}
+                      deleteCoupon={deleteCoupon}
+                    />
+                ))
+                }
               </ul>
             </div>
           </div>
@@ -48,17 +56,21 @@ class CouponsList extends React.Component {
   }
 }
 
+
 CouponsList.propTypes = {
   getCoupons: React.PropTypes.func.isRequired,
   createCoupon: React.PropTypes.func.isRequired,
   deleteCoupon: React.PropTypes.func.isRequired,
+  logout: React.PropTypes.func.isRequired,
   coupons: React.PropTypes.array.isRequired,
   isGettingCoupons: React.PropTypes.bool.isRequired,
   isDeletingCoupons: React.PropTypes.bool.isRequired,
   isCreatingCoupons: React.PropTypes.bool.isRequired,
+  user: React.PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({
+  user: state.user,
   coupons: state.coupons.coupons,
   isGettingCoupons: state.coupons.isGettingCoupons,
   isDeletingCoupons: state.coupons.isDeletingCoupons,
@@ -67,8 +79,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getCoupons: () => dispatch(getCouponsAction()),
-  createCoupon: id => dispatch(createCouponAction({ id })),
+  createCoupon: body => dispatch(createCouponAction(body)),
   deleteCoupon: id => dispatch(deleteCouponAction(id)),
+  logout: () => dispatch(logoutAction()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CouponsList);

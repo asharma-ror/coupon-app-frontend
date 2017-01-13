@@ -33,7 +33,7 @@ header h1 a:hover {
   position: relative;
 }
 
-.right-block ul li a {
+.right-block ul li button {
   text-decoration: none;
   background: none;
   border: 1px #fff solid;
@@ -43,17 +43,12 @@ header h1 a:hover {
 
 .dropdown .dropdown-menu {
   background: rgb(0, 0, 0);
-  display: none;
   -moz-transition: all 1000ms ease;
   -webkit-transition: all 1000ms ease;
   -o-transition: all 1000ms ease;
   -ms-transition: all 1000ms ease;
   transition: all 1000ms ease;
   min-width: 400px;
-}
-
-.dropdown li.add-coupon:hover .custom-form {
-  display: block;
 }
 
 .right-block ul li .dropdown-menu li a {
@@ -67,6 +62,7 @@ header h1 a:hover {
 .custom-form {
   padding: 15px;
   left: -295px;
+  display: block;
 }
 
 .coupon-field {
@@ -86,11 +82,11 @@ header h1 a:hover {
 
 .my-coupon ul li {
   list-style-type: none;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
   position: relative;
 }
 
-.my-coupon ul li a {
+.my-coupon ul li .main-white-bg {
   background: #fff;
   display: inline-block;
   width: 100%;
@@ -104,39 +100,70 @@ header h1 a:hover {
 }
 
 .left-block {
-  background: #15a4fa;
+  background: #15a4fa none repeat scroll 0 0;
   color: #fff;
-  font-size: 18px;
   float: left;
-  padding: 21px 6px;
+  font-size: 18px;
+  padding: 3px 0;
   position: relative;
+  text-align: center;
+  width: 100%;
+}
+
+.left-block h4 {
+  font-weight: 700;
+  font-size: 20px;
+  display: inline-block;
 }
 
 .left-block span {
-  font-weight: 700;
-  font-size: 26px;
+  display: inline-block;
+  font-size: 18px;
+  padding: 0px 5px;
 }
 
 .left-block p {
   font-size: 12px;
 }
 
-.left-block:after {
-  width: 0;
-  height: 0;
-  border-right: 60px solid transparent;
-  border-top: 106px solid #15a4fa;
-  content: "";
+.right-b {
   float: left;
-  position: absolute;
-  right: -59px;
-  top: 0px;
+  padding: 13px 15px;
 }
 
-.right-b {
-  padding-left: 59px;
+input[disabled] {
+  color: #000 !important;
+}
+
+.space-block {
   display: inline-block;
+  padding: 4px 20px;
+  vertical-align: top;
+  width: 100%;
+}
+
+.save-amount {
+  background: #fff;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  color: #000;
+  border: 3px #000 solid;
+  float: left;
+  padding: 12px 22px;
   text-align: center;
+}
+
+.save-amount h4 {
+  display: inline-block;
+  font-size: 21px;
+  font-weight: 700;
+  margin-bottom: 0;
+  text-transform: uppercase;
+}
+
+.save-amount p {
+  font-size: 20px;
 }
 
 .right-b h5 {
@@ -156,7 +183,7 @@ header h1 a:hover {
   color: #000;
 }
 
-.my-coupon a.close-btn {
+.my-coupon button.close-btn {
   background: #000 none repeat scroll 0 0;
   border-radius: 50%;
   color: #fff;
@@ -168,4 +195,39 @@ header h1 a:hover {
   top: -9px;
   width: 30px;
   height: 30px
+}
+
+@media screen and (max-width: 767px) {
+  .logo,
+  .right-block,
+  .right-block ul li {
+    float: none;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+  }
+  .right-block ul li button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .space-block {
+    text-align: center;
+  }
+  .space-block .save-amount {
+    display: inline-block;
+    float: none;
+  }
+  .right-b {
+    float: none;
+    display: inline-block;
+    width: 100%;
+    padding: 0px;
+  }
+  .custom-form {
+    left: 0;
+    min-width: 100% !important;
+    padding: 15px;
+    width: 100%;
+    top: 83px;
+  }
 }
