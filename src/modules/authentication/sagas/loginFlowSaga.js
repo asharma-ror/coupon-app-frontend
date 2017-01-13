@@ -6,7 +6,7 @@ import { userAction } from '../../user/actions/userActions';
 import { pushPath } from '../../../routes/actions/routeActions';
 import { COUPONS_ROUTE, LOGIN_ROUTE } from '../../../constants/Routes';
 import { setAuthorizationToken } from '../../../api/api';
-import { AUTHENTICATION_TOKEN_STORAGE_KEY } from '../../../constants/constants';
+import { AUTHENTICATION_TOKEN_STORAGE_KEY, USER_STORAGE_KEY } from '../../../constants/constants';
 
 export function* loginSuccess(action) {
   const token = action.data.token;
@@ -15,6 +15,7 @@ export function* loginSuccess(action) {
   yield call(setAuthorizationToken, token);
 
   const user = action.data.user;
+  localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(user));
   yield put(userAction(user));
 
   yield put(pushPath(COUPONS_ROUTE));
@@ -27,6 +28,7 @@ export function* logout() {
   yield call(setAuthorizationToken, token);
 
   yield put(userAction({}));
+  localStorage.removeItem(USER_STORAGE_KEY, {});
   yield put(pushPath(LOGIN_ROUTE));
 }
 
