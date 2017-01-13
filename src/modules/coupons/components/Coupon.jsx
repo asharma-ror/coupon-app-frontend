@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const Coupon = ({ coupon, showDelete, deleteCoupon }) => {
+const Coupon = ({ coupon, showDelete, deleteCoupon, isDeletingCoupons }) => {
   const { currency, id } = coupon;
 
   const offTitle = coupon.amount_off ? `${coupon.amount_off}${currency}` : `${coupon.percent_off}%`;
@@ -20,7 +20,7 @@ const Coupon = ({ coupon, showDelete, deleteCoupon }) => {
           </div>
         </div>
       </div>
-      { showDelete && <button className={'close-btn'} onClick={() => deleteCoupon(coupon.id)}>x</button>}
+      { showDelete && <button disabled={isDeletingCoupons} className={'close-btn'} onClick={() => deleteCoupon(coupon.id)}>x</button>}
     </li>
   );
 };
@@ -29,6 +29,7 @@ Coupon.propTypes = {
   showDelete: React.PropTypes.bool.isRequired,
   coupon: React.PropTypes.object.isRequired,
   deleteCoupon: React.PropTypes.func.isRequired,
+  isDeletingCoupons: React.PropTypes.bool.isRequired,
 };
 
 export default Coupon;
