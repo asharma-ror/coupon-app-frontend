@@ -11,7 +11,7 @@ const getHeaders = () => {
   const token = authorizationToken;
 
   return token ? {
-    Authorization: `Token ${token}`,
+    Authorization: `Bearer ${token}`,
     ...headers,
   } : headers;
 };
@@ -21,7 +21,7 @@ function statusHelper(response) {
     return Promise.resolve(response);
   }
 
-  return Promise.reject(new Error(response.statusText));
+  return Promise.reject(response);
 }
 
 export const apiCall = (url, method, body) => (
@@ -32,8 +32,8 @@ export const apiCall = (url, method, body) => (
     mode: 'cors',
   })
     .then(statusHelper)
-    .then(response => response.json())
     .catch(error => error)
+    .then(response => response.json())
     .then(data => data)
 );
 
@@ -44,3 +44,5 @@ export const setAuthorizationToken = (token) => {
 export const getApiCall = (url, body) => apiCall(url, 'GET', body);
 
 export const postApiCall = (url, body) => apiCall(url, 'POST', body);
+
+export const deleteApiCall = (url, body) => apiCall(url, 'DELETE', body);
