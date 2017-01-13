@@ -14,12 +14,6 @@ class CouponsList extends React.Component {
 
   componentWillMount() {
     this.props.getCoupons();
-
-    console.log(this.props.coupons);
-    console.log(this.props.isGettingCoupons);
-    console.log(this.props.isDeletingCoupons);
-    console.log(this.props.isCreatingCoupons);
-    console.log(this.props.errorInDelete);
   }
 
   render() {
@@ -30,7 +24,9 @@ class CouponsList extends React.Component {
       createCoupon,
       logout,
       isCreatingCoupons,
-      errorInCreate } = this.props;
+      errorInCreate,
+      errorInDelete,
+      isDeletingCoupons } = this.props;
 
     return (
       <div>
@@ -44,6 +40,11 @@ class CouponsList extends React.Component {
           <div className={'container'}>
             <div className={'my-coupon'}>
               <h2> Coupons</h2>
+              { errorInDelete !== '' &&
+                <div className={'alert alert-danger'}>
+                  {errorInDelete}
+                </div>
+              }
               <ul className={'row'}>
                 {
                   coupons.map(coupon => (
@@ -52,8 +53,9 @@ class CouponsList extends React.Component {
                       coupon={coupon}
                       showDelete={(coupon.user_id === user.id)}
                       deleteCoupon={deleteCoupon}
+                      isDeletingCoupons={isDeletingCoupons}
                     />
-                ))
+                  ))
                 }
               </ul>
             </div>
@@ -71,7 +73,6 @@ CouponsList.propTypes = {
   deleteCoupon: React.PropTypes.func.isRequired,
   logout: React.PropTypes.func.isRequired,
   coupons: React.PropTypes.array.isRequired,
-  isGettingCoupons: React.PropTypes.bool.isRequired,
   isDeletingCoupons: React.PropTypes.bool.isRequired,
   isCreatingCoupons: React.PropTypes.bool.isRequired,
   user: React.PropTypes.object.isRequired,
@@ -87,7 +88,6 @@ CouponsList.defaultProps = {
 const mapStateToProps = state => ({
   user: state.user,
   coupons: state.coupons.coupons,
-  isGettingCoupons: state.coupons.isGettingCoupons,
   isDeletingCoupons: state.coupons.isDeletingCoupons,
   isCreatingCoupons: state.coupons.isCreatingCoupons,
   errorInDelete: state.coupons.errorInDelete,
